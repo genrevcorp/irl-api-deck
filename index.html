@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IRL API — The physical world, as an API · 把實體世界變成 API</title>
-<meta name="description" content="IRL API — cheap edge sensors turn the physical world into clean structured events your software can subscribe to. 低成本邊緣感測器，把實體世界轉成你的軟體能訂閱的結構化事件。">
+<meta name="description" content="IRL API — cheap edge sensors turn the physical world into clean structured events your software can subscribe to. 平價 AI 感測器，把現場發生的事變成你的軟體能直接使用的事件通知。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -128,6 +128,19 @@
   .accent-amber{color:var(--amber)}
   .accent-red{color:var(--red)}
 
+  /* plain-words callout */
+  .plain{
+    margin-top:34px;max-width:760px;
+    border:1px solid rgba(255,197,107,.32);border-left:3px solid var(--amber);
+    border-radius:10px;padding:18px 22px;
+    background:rgba(255,197,107,.05);
+  }
+  .plain .plabel{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--amber);display:block;margin-bottom:8px;
+  }
+  .plain p{font-size:.96rem;color:var(--text)}
+
   /* staggered reveal */
   .slide .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
   .slide.in .rv{opacity:1;transform:none}
@@ -234,6 +247,7 @@
   .stage h3{font-size:1.04rem;font-weight:750;font-variation-settings:"wdth" 112;margin-bottom:10px}
   html[data-lang="zh"] .stage h3{font-variation-settings:"wdth" 100}
   .stage p{font-size:.9rem;color:var(--dim)}
+  .stage p strong{color:var(--text);font-weight:600}
   .stage .meta{margin-top:16px;font-family:var(--mono);font-size:10.5px;color:var(--green);letter-spacing:.08em}
 
   /* big stat strip */
@@ -243,6 +257,7 @@
   .stat .big{font-family:var(--sans);font-variation-settings:"wdth" 120;font-weight:850;font-size:clamp(1.7rem,3.4vw,2.6rem);color:var(--text);line-height:1}
   .stat .big em{font-style:normal;color:var(--green)}
   .stat .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:10px}
+  html[data-lang="zh"] .stat .lbl{letter-spacing:.06em;font-size:11.5px}
 
   /* vertical rows */
   .vrows{margin-top:46px;border-top:1px solid var(--line-strong)}
@@ -318,7 +333,7 @@
   <a class="wordmark" href="#cover">IRL<span class="slash">//</span>API</a>
   <div class="status"><span class="livedot"></span>
     <span class="en">prototype live · pet vertical</span>
-    <span class="zh" lang="zh-Hant-TW">原型運作中 · 寵物垂直領域</span>
+    <span class="zh" lang="zh-Hant-TW">原型已上線 · 寵物領域</span>
   </div>
   <div class="langtoggle" role="group" aria-label="Language">
     <button id="btn-en" onclick="setLang('en')">EN</button>
@@ -337,20 +352,20 @@
   <div class="ticker" id="ticker" aria-hidden="true"></div>
   <div class="kicker rv">
     <span class="en">IRL API · working name · Taiwan</span>
-    <span class="zh" lang="zh-Hant-TW">IRL API · 計畫代號 · 台灣</span>
+    <span class="zh" lang="zh-Hant-TW">IRL API · 暫定名稱 · 台灣</span>
   </div>
   <h1 class="rv">
     <span class="en"><span class="ln">The physical world,</span><span class="ln accent">as an API.</span></span>
     <span class="zh" lang="zh-Hant-TW"><span class="ln">把實體世界，</span><span class="ln accent">變成 API。</span></span>
   </h1>
   <p class="lede rv">
-    <span class="en">Cheap edge sensors turn what's happening in the real world into <strong>clean, structured events</strong> — that any vertical software can subscribe to with a single webhook.</span>
-    <span class="zh" lang="zh-Hant-TW">低成本邊緣感測器，把現場正在發生的事，轉成<strong>乾淨的結構化事件</strong>——任何垂直產業軟體，只要一條 webhook 就能訂閱。</span>
+    <span class="en">Cheap AI sensors turn what's happening in the real world into <strong>clean, structured event notifications</strong> — that any industry's software can plug into and use, instantly.</span>
+    <span class="zh" lang="zh-Hant-TW">平價的 AI 感測器，把現場發生的大小事，即時整理成<strong>乾淨、看得懂的事件通知</strong>——任何產業的軟體，接上就能直接用。</span>
   </p>
   <div class="tagline-mono rv">$ curl https://api.irl.dev/v1/events?type=table.ready<span class="cursor"></span></div>
   <div class="rv"><span class="coverstatus"><span class="livedot"></span>
     <span class="en">pipeline running today — pet vertical</span>
-    <span class="zh" lang="zh-Hant-TW">管線今天就在運作 — 寵物垂直領域</span>
+    <span class="zh" lang="zh-Hant-TW">系統已實際運作 — 寵物產業</span>
   </span></div>
 </section>
 
@@ -359,30 +374,30 @@
   <div class="kicker rv"><span class="en">01 — The problem</span><span class="zh" lang="zh-Hant-TW">01 — 問題</span></div>
   <h2 class="rv">
     <span class="en">Software runs every business. <span class="accent-red">It just can't see.</span></span>
-    <span class="zh" lang="zh-Hant-TW">軟體管理著每一家企業，<span class="accent-red">卻看不見現場。</span></span>
+    <span class="zh" lang="zh-Hant-TW">軟體管理著每一家公司，<span class="accent-red">卻看不見現場。</span></span>
   </h2>
   <p class="lede rv">
     <span class="en">The ERP knows the orders, the bookings, the inventory. It doesn't know whether table 4 is actually cleared, court 2 is actually occupied, or bird #1042 stopped eating this morning.</span>
-    <span class="zh" lang="zh-Hant-TW">ERP 知道訂單、預約、庫存——但它不知道 4 號桌到底收乾淨了沒、2 號球場現在有沒有人、1042 號雞今天早上是不是不吃了。</span>
+    <span class="zh" lang="zh-Hant-TW">ERP 知道訂單、預約、庫存，但它不知道：4 號桌收乾淨了沒？2 號球場現在有人在打嗎？編號 1042 的雞，今天早上是不是不吃飼料了？</span>
   </p>
   <div class="grid3">
     <div class="card alert rv">
       <span class="num">GAP·01</span>
-      <h3><span class="en">The last 10 meters are manual</span><span class="zh" lang="zh-Hant-TW">最後十公尺靠人工</span></h3>
+      <h3><span class="en">The last 10 meters are manual</span><span class="zh" lang="zh-Hant-TW">最後一哩路，還是靠人工</span></h3>
       <p><span class="en">The physical world enters software through a human typing — <strong>late, wrong, and expensive</strong>. Most of it never gets entered at all.</span>
-      <span class="zh" lang="zh-Hant-TW">實體世界要進到軟體裡，得靠人打字輸入——<strong>慢、錯、貴</strong>。而大部分的事，根本沒人輸入。</span></p>
+      <span class="zh" lang="zh-Hant-TW">現場的狀況要進到系統，得靠人手動輸入——<strong>慢、容易錯、又花人力</strong>。而更多時候，根本沒人輸入。</span></p>
     </div>
     <div class="card alert rv">
       <span class="num">GAP·02</span>
-      <h3><span class="en">CV exists — as closed dashboards</span><span class="zh" lang="zh-Hant-TW">電腦視覺存在——但都是封閉儀表板</span></h3>
-      <p><span class="en">Camera-AI vendors sell <strong>finished end-products to enterprises</strong>. Your software can't embed their detections. You get another login, not an API.</span>
-      <span class="zh" lang="zh-Hant-TW">攝影機 AI 廠商賣的是<strong>賣給企業的成品</strong>。你的軟體嵌不進它的偵測結果——你得到的是另一組帳號密碼，不是 API。</span></p>
+      <h3><span class="en">AI cameras exist — as closed systems</span><span class="zh" lang="zh-Hant-TW">市面上有 AI 攝影機，但都是封閉系統</span></h3>
+      <p><span class="en">Camera-AI vendors sell <strong>complete, sealed products</strong>: their screen, their app, their login. Your own software can't tap into what their cameras see.</span>
+      <span class="zh" lang="zh-Hant-TW">廠商賣的是整套自己的產品：自己的螢幕、自己的 App、自己的帳號。<strong>你原本的系統接不進去</strong>——你多了一組密碼，卻沒有多一雙眼睛。</span></p>
     </div>
     <div class="card alert rv">
       <span class="num">GAP·03</span>
-      <h3><span class="en">"Person detected" is worthless</span><span class="zh" lang="zh-Hant-TW">「偵測到人」毫無價值</span></h3>
-      <p><span class="en">Generic detection is a commodity. What a business bills, schedules and alerts on is <strong>vertical meaning</strong>: "table ready", "sick bird", "court free".</span>
-      <span class="zh" lang="zh-Hant-TW">通用偵測早已是大宗商品。企業真正用來計費、排程、警示的，是<strong>垂直產業的意義</strong>：「桌面就緒」、「疑似病雞」、「球場空出」。</span></p>
+      <h3><span class="en">"Person detected" is worthless</span><span class="zh" lang="zh-Hant-TW">光是「偵測到人」，沒有用</span></h3>
+      <p><span class="en">Generic detection is everywhere already. What a business actually acts on is <strong>meaning</strong>: "table ready", "this bird may be sick", "court just freed up".</span>
+      <span class="zh" lang="zh-Hant-TW">通用的偵測功能到處都有。企業真正需要的，是<strong>跟生意直接相關的訊息</strong>：「這桌可以帶位了」、「這隻雞可能生病了」、「球場空出來了」。</span></p>
     </div>
   </div>
 </section>
@@ -392,12 +407,17 @@
   <div class="kicker rv"><span class="en">02 — The product</span><span class="zh" lang="zh-Hant-TW">02 — 產品</span></div>
   <h2 class="rv">
     <span class="en">One webhook. <span class="accent">The real world, structured.</span></span>
-    <span class="zh" lang="zh-Hant-TW">一條 webhook，<span class="accent">把真實世界結構化。</span></span>
+    <span class="zh" lang="zh-Hant-TW">現場發生什麼事，<span class="accent">你的系統馬上知道。</span></span>
   </h2>
   <p class="lede rv">
-    <span class="en">We don't sell "person detected." We sell <strong>the event your vertical actually runs on</strong> — delivered signed, versioned, and idempotent, like a Stripe webhook.</span>
-    <span class="zh" lang="zh-Hant-TW">我們賣的不是「偵測到人」，而是<strong>你的產業真正賴以運作的事件</strong>——像 Stripe webhook 一樣：簽章、版本化、冪等送達。</span>
+    <span class="en">We don't sell "person detected." We sell <strong>the event your business actually runs on</strong> — delivered with the same reliability mechanics Stripe uses for payment notifications: verified, versioned, never lost, never duplicated.</span>
+    <span class="zh" lang="zh-Hant-TW">我們賣的不是「偵測到人」這種陽春訊號，而是<strong>你的生意真正用得上的事件通知</strong>——格式穩定、來源可驗證、不漏接、不重複，可靠程度比照金流通知的等級。</span>
   </p>
+  <div class="plain rv">
+    <span class="plabel"><span class="en">In plain words</span><span class="zh" lang="zh-Hant-TW">白話來說</span></span>
+    <p><span class="en">A "webhook" is like an automatic text message between computer systems. The moment something happens on-site, your software instantly receives a short note saying exactly what happened — no one has to watch a screen, no one has to type anything in.</span>
+    <span class="zh" lang="zh-Hant-TW">「webhook」就像系統跟系統之間的 LINE 訊息——現場一有狀況，你的軟體立刻收到一則寫清楚「發生了什麼事」的通知。不用有人盯著螢幕看，也不用有人打字輸入。</span></p>
+  </div>
   <div class="code rv" data-label="POST → your software">
     <div class="scan"></div>
 <pre>{
@@ -412,46 +432,46 @@
 }</pre>
   </div>
   <p class="lede rv" style="margin-top:30px">
-    <span class="en">Your developers integrate in an afternoon. Your product gains eyes — <strong>without you building a single model</strong>.</span>
-    <span class="zh" lang="zh-Hant-TW">你的工程師一個下午就能串接完成。你的產品從此有了眼睛——<strong>而你不用自己訓練任何模型</strong>。</span>
+    <span class="en">The block above is everything your software receives — what happened, to whom, how confident the AI is, with the video clip attached. <strong>Your developers connect it in an afternoon, and you never touch an AI model.</strong></span>
+    <span class="zh" lang="zh-Hant-TW">上面這份就是你的系統收到的全部內容：發生什麼事、發生在誰身上、AI 有多確定，還附上影片連結。<strong>你的工程師一個下午就能串接好，而你完全不用碰 AI 模型。</strong></span>
   </p>
 </section>
 
 <!-- 04 ─ HOW IT WORKS -->
 <section class="slide" id="how">
-  <div class="kicker rv"><span class="en">03 — Architecture</span><span class="zh" lang="zh-Hant-TW">03 — 架構</span></div>
+  <div class="kicker rv"><span class="en">03 — Architecture</span><span class="zh" lang="zh-Hant-TW">03 — 運作方式</span></div>
   <h2 class="rv">
     <span class="en">Gate cheap. <span class="accent">Enrich smart.</span> Deliver clean.</span>
-    <span class="zh" lang="zh-Hant-TW">便宜地把關，<span class="accent">聰明地理解，</span>乾淨地送達。</span>
+    <span class="zh" lang="zh-Hant-TW">小 AI 顧現場，<span class="accent">大 AI 做判斷，</span>結果直接進系統。</span>
   </h2>
   <div class="pipeline rv">
     <div class="stage">
       <span class="tag">01 · edge</span>
-      <h3><span class="en">Always-on trigger</span><span class="zh" lang="zh-Hant-TW">永遠在線的觸發器</span></h3>
-      <p><span class="en">A $30-class sensor (camera + mmWave) runs small on-device detection — presence, zones, motion, audio. It watches 24/7 for almost nothing.</span>
-      <span class="zh" lang="zh-Hant-TW">約 30 美元等級的感測器（攝影機＋毫米波雷達）在裝置端跑輕量偵測——在席、區域、動作、聲音。24 小時監看，成本趨近於零。</span></p>
-      <div class="meta">COST ≈ 0 · RECALL FIRST</div>
+      <h3><span class="en">Always-on watcher</span><span class="zh" lang="zh-Hant-TW">24 小時顧現場的小哨兵</span></h3>
+      <p><span class="en">A $30-class sensor (camera + radar) with a small built-in AI keeps watch around the clock: did something appear, move, make a sound? <strong>It's cheap enough to never turn off.</strong></span>
+      <span class="zh" lang="zh-Hant-TW">一台約千元台幣的感測器（攝影機＋雷達），內建小型 AI，全天候注意現場：有東西出現嗎？有動靜嗎？有聲音嗎？<strong>因為夠便宜，可以一直開著。</strong></span></p>
+      <div class="meta">COST ≈ 0 · ALWAYS WATCHING</div>
     </div>
     <div class="pipearrow"><svg width="46" height="14" viewBox="0 0 46 14" fill="none"><line class="dashline" x1="0" y1="7" x2="36" y2="7" stroke="currentColor" stroke-width="1.5"/><path d="M36 1l9 6-9 6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>
     <div class="stage">
       <span class="tag">02 · cloud</span>
-      <h3><span class="en">VLM verifies the moment</span><span class="zh" lang="zh-Hant-TW">VLM 驗證關鍵時刻</span></h3>
-      <p><span class="en">Only triggered moments reach a vision-language model, <strong>prompt-configured per vertical</strong>. A new vertical is a new config pack — not a newly trained model.</span>
-      <span class="zh" lang="zh-Hant-TW">只有被觸發的片刻才會送進視覺語言模型，且<strong>以提示詞按垂直領域配置</strong>。新增一個垂直領域＝一份新設定檔，不是重新訓練模型。</span></p>
+      <h3><span class="en">Smart AI reads the moment</span><span class="zh" lang="zh-Hant-TW">聰明的 AI 看懂狀況</span></h3>
+      <p><span class="en">Only the moments that look interesting are sent to a powerful cloud AI that genuinely understands images. <strong>Supporting a new industry is a configuration change</strong> — not a newly trained model.</span>
+      <span class="zh" lang="zh-Hant-TW">只有「疑似有事」的片刻，才會送到雲端，讓看得懂影像的大型 AI 判斷一眼。<strong>要支援新的產業，改一份設定就好</strong>——不用重新訓練模型。</span></p>
       <div class="meta">PENNIES / EVENT · BUDGETED</div>
     </div>
     <div class="pipearrow"><svg width="46" height="14" viewBox="0 0 46 14" fill="none"><line class="dashline" x1="0" y1="7" x2="36" y2="7" stroke="currentColor" stroke-width="1.5"/><path d="M36 1l9 6-9 6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>
     <div class="stage">
       <span class="tag">03 · api</span>
-      <h3><span class="en">Signed webhook out</span><span class="zh" lang="zh-Hant-TW">簽章 webhook 送達</span></h3>
-      <p><span class="en">Versioned schema, HMAC-signed, retried, idempotent. Plus an <strong>actions API back</strong>: play a sound, warn an intruder — the loop closes both ways.</span>
-      <span class="zh" lang="zh-Hant-TW">版本化 schema、HMAC 簽章、自動重送、冪等。還有<strong>反向的 actions API</strong>：播放聲音、警示驅離——感知與行動雙向閉環。</span></p>
+      <h3><span class="en">Result lands in your software</span><span class="zh" lang="zh-Hant-TW">結果直接送進你的系統</span></h3>
+      <p><span class="en">Fixed format, verified sender, automatically retried — never lost, never duplicated. Plus an <strong>actions channel back</strong>: play a sound, send a warning. It can see, and it can act.</span>
+      <span class="zh" lang="zh-Hant-TW">判斷結果立刻送進你的軟體：格式固定、可驗證、不漏接、不重複。<strong>還能反過來下指令</strong>：播放聲音、發出提醒——不只看得到，還能出手。</span></p>
       <div class="meta">irl.event.v1 · 2-WAY</div>
     </div>
   </div>
   <p class="lede rv" style="margin-top:34px">
-    <span class="en">This gate-then-enrich pattern is how Verkada affordably processes <strong>~1 billion hours of video a month</strong> — edge detection gates the expensive AI. We apply the same physics to every vertical, as an open API.</span>
-    <span class="zh" lang="zh-Hant-TW">這套「先把關、再理解」的模式，正是 Verkada 能以可負擔成本處理<strong>每月約 10 億小時影像</strong>的原因——邊緣偵測替昂貴的 AI 把關。我們把同樣的物理法則應用到每個垂直領域，並以開放 API 的形式提供。</span>
+    <span class="en">Why split it this way? Because watching is cheap and understanding is expensive. This is exactly how Verkada — the largest cloud security-camera company in the US — affordably processes <strong>~1 billion hours of video a month</strong>: cheap detection on the camera filters first, the costly AI only looks at what matters. We apply the same physics to every industry, as an open API.</span>
+    <span class="zh" lang="zh-Hant-TW">為什麼要這樣分工？因為「看著」很便宜，「看懂」很貴。美國最大的雲端監控公司 Verkada，就是靠這套「前端先過濾、AI 只看重點」的做法，才能用合理成本處理<strong>每月約 10 億小時的影像</strong>。我們把同一套邏輯用到保全以外的各行各業，而且做成開放的 API。</span>
   </p>
 </section>
 
@@ -460,97 +480,97 @@
   <div class="kicker rv"><span class="en">04 — Why now</span><span class="zh" lang="zh-Hant-TW">04 — 為什麼是現在</span></div>
   <h2 class="rv">
     <span class="en">Three curves just crossed.</span>
-    <span class="zh" lang="zh-Hant-TW">三條曲線，剛好交會。</span>
+    <span class="zh" lang="zh-Hant-TW">三件事同時到位，窗口剛剛打開。</span>
   </h2>
   <div class="stats rv">
     <div class="stat">
       <div class="big">~$<em>30</em></div>
-      <div class="lbl"><span class="en">open edge-AI cameras (RISC-V NPU) — hardware is commodity</span><span class="zh" lang="zh-Hant-TW">開放式邊緣 AI 攝影機（RISC-V NPU）——硬體已大宗商品化</span></div>
+      <div class="lbl"><span class="en">open AI cameras — sensing hardware is now a commodity</span><span class="zh" lang="zh-Hant-TW">一台 AI 攝影機千元有找——硬體已經夠便宜</span></div>
     </div>
     <div class="stat">
       <div class="big"><em>¢</em>/event</div>
-      <div class="lbl"><span class="en">VLM cost collapse — scene understanding by prompt, not by training</span><span class="zh" lang="zh-Hant-TW">VLM 成本崩跌——用提示詞就能理解場景，不必訓練</span></div>
+      <div class="lbl"><span class="en">AI that looks at an image and says what's happening got radically cheap — pennies per event</span><span class="zh" lang="zh-Hant-TW">「看圖說出發生什麼事」的 AI 變得超便宜——每則事件只要幾毛錢</span></div>
     </div>
     <div class="stat">
       <div class="big"><em>1B</em> hrs/mo</div>
-      <div class="lbl"><span class="en">the architecture proven at enterprise scale (Verkada, security vertical)</span><span class="zh" lang="zh-Hant-TW">此架構已在企業規模獲得驗證（Verkada，安防垂直領域）</span></div>
+      <div class="lbl"><span class="en">the same architecture already proven at giant scale — by Verkada, in security</span><span class="zh" lang="zh-Hant-TW">同樣架構已被大規模驗證——Verkada 在保全業每月處理 10 億小時影像</span></div>
     </div>
     <div class="stat">
       <div class="big"><em>0</em></div>
-      <div class="lbl"><span class="en">players selling embeddable vertical-meaning events to software companies</span><span class="zh" lang="zh-Hant-TW">把「垂直意義事件」以可嵌入 API 賣給軟體公司的玩家數</span></div>
+      <div class="lbl"><span class="en">companies selling these business-meaning events as an API to software makers — the lane is empty</span><span class="zh" lang="zh-Hant-TW">把「產業意義事件」做成 API 賣給軟體公司的玩家——目前是零</span></div>
     </div>
   </div>
   <p class="lede rv" style="margin-top:40px">
-    <span class="en">Capital is pouring into "Physical AI" — but it sits at the two ends: horizontal dev-tools and closed end-products. <strong>The middle — vertical meaning, sold as an API — is open.</strong></span>
-    <span class="zh" lang="zh-Hant-TW">資本正湧入「Physical AI」——但都集中在兩端：水平的開發工具，以及封閉的終端產品。<strong>中間這一層——以 API 形式販售的垂直意義——還是空的。</strong></span>
+    <span class="en">Investors are pouring money into "Physical AI" — but it all sits at the two ends: developer tools for engineers, and closed all-in-one products for big enterprises. <strong>The middle — business meaning, sold as an API — is wide open.</strong></span>
+    <span class="zh" lang="zh-Hant-TW">資金正大量湧入「實體世界 AI」，但都擠在兩端：給工程師用的開發工具，和賣給大企業的整套產品。<strong>中間這一層——把產業意義做成 API——還沒有人佔下來。</strong></span>
   </p>
 </section>
 
 <!-- 06 ─ PROOF -->
 <section class="slide" id="proof">
-  <div class="kicker rv"><span class="en">05 — Proof, not slideware</span><span class="zh" lang="zh-Hant-TW">05 — 不是簡報，是運作中的系統</span></div>
+  <div class="kicker rv"><span class="en">05 — Proof, not slideware</span><span class="zh" lang="zh-Hant-TW">05 — 不只是簡報</span></div>
   <h2 class="rv">
     <span class="en">The pipeline <span class="accent">runs today.</span></span>
-    <span class="zh" lang="zh-Hant-TW">這條管線，<span class="accent">今天就在運作。</span></span>
+    <span class="zh" lang="zh-Hant-TW">這套系統，<span class="accent">今天就在運作。</span></span>
   </h2>
   <p class="lede rv">
-    <span class="en">We ship two products in the pet vertical. They are this exact architecture — and our own app is the API's customer #1, so the developer contract is dogfooded before it's ever sold.</span>
-    <span class="zh" lang="zh-Hant-TW">我們在寵物垂直領域已有兩個出貨產品，跑的就是這套架構——而我們自己的 App 就是這個 API 的第一號客戶：開發者合約在賣給任何人之前，先由我們自己天天使用。</span>
+    <span class="en">We ship two products in the pet vertical. They are this exact architecture — and our own app is the API's customer #1, so the developer experience gets battle-tested by us, daily, before it's ever sold.</span>
+    <span class="zh" lang="zh-Hant-TW">我們在寵物產業已經有兩個上線的產品，跑的就是這套架構。而且我們自己的 App 就是這個 API 的第一個客戶——要賣給別人之前，我們自己每天都在用。</span>
   </p>
   <div class="grid3">
     <div class="card rv">
       <span class="num">SHIPPED</span>
       <h3>PawtientAI</h3>
-      <p><span class="en">Pet-health app in production — health timeline, blood-test tracking, vet records. <strong>Consumes Watch events through the same signed webhook an external customer would use.</strong></span>
-      <span class="zh" lang="zh-Hant-TW">已上線的寵物健康 App——健康時間軸、血檢追蹤、就診紀錄。<strong>透過與外部客戶完全相同的簽章 webhook 接收事件。</strong></span></p>
+      <p><span class="en">Pet-health app in production — health timeline, blood-test tracking, vet records. <strong>It receives Watch events exactly the way a future external customer would.</strong></span>
+      <span class="zh" lang="zh-Hant-TW">已上線的寵物健康 App——健康紀錄、血檢追蹤、就診管理。<strong>它接收事件的方式，跟未來任何外部客戶一模一樣。</strong></span></p>
     </div>
     <div class="card rv">
       <span class="num">SHIPPED</span>
       <h3>PawtientWatch</h3>
-      <p><span class="en">Old phones become AI pet monitors: on-device detection, behavior tracking, cough/CHF frequency analysis, seizure heuristics — <strong>edge ML we built and ship ourselves</strong>.</span>
-      <span class="zh" lang="zh-Hant-TW">讓舊手機變成 AI 寵物監視器：裝置端偵測、行為追蹤、咳嗽/鬱血性心衰竭頻率分析、癲癇徵兆偵測——<strong>邊緣 ML 由我們自行開發並出貨</strong>。</span></p>
+      <p><span class="en">Old phones become AI pet monitors: pet detection, behavior tracking, cough-frequency analysis, seizure heuristics — <strong>AI we built ourselves, shipping on real devices</strong>.</span>
+      <span class="zh" lang="zh-Hant-TW">把家裡的舊手機變成 AI 寵物攝影機：偵測寵物、追蹤行為、分析咳嗽頻率、偵測癲癇徵兆——<strong>這些 AI 全是我們自己開發、實際出貨的</strong>。</span></p>
     </div>
     <div class="card amber rv">
       <span class="num">IN BUILD</span>
-      <h3><span class="en">IRL Kernel + Furbo-class MVP</span><span class="zh" lang="zh-Hant-TW">IRL Kernel ＋ Furbo 級 MVP</span></h3>
-      <p><span class="en">The generic sensing framework (8 trigger classes, declarative vertical packs, event contract v1) is specced and being built inside PawtientWatch. <strong>~8 weeks to MVP.</strong></span>
-      <span class="zh" lang="zh-Hant-TW">通用感測框架（8 種觸發類別、宣告式垂直設定包、事件合約 v1）已完成規格，正在 PawtientWatch 內實作。<strong>約 8 週可達 MVP。</strong></span></p>
+      <h3><span class="en">IRL Kernel + Furbo-class MVP</span><span class="zh" lang="zh-Hant-TW">IRL 核心 ＋ Furbo 級 MVP</span></h3>
+      <p><span class="en">The generic sensing framework is fully specced and being built inside PawtientWatch now, targeting feature parity with Furbo, the best-selling pet camera. <strong>~8 weeks to MVP.</strong></span>
+      <span class="zh" lang="zh-Hant-TW">通用感測框架已完成設計，正在 PawtientWatch 裡實作，目標是做到暢銷寵物攝影機 Furbo 的完整功能。<strong>預計約 8 週完成。</strong></span></p>
     </div>
   </div>
 </section>
 
 <!-- 07 ─ VERTICALS -->
 <section class="slide" id="verticals">
-  <div class="kicker rv"><span class="en">06 — Verticals</span><span class="zh" lang="zh-Hant-TW">06 — 垂直領域</span></div>
+  <div class="kicker rv"><span class="en">06 — Verticals</span><span class="zh" lang="zh-Hant-TW">06 — 產業應用</span></div>
   <h2 class="rv">
     <span class="en">Same kernel. <span class="accent">New vertical = new config.</span></span>
-    <span class="zh" lang="zh-Hant-TW">同一個核心，<span class="accent">新領域＝新設定檔。</span></span>
+    <span class="zh" lang="zh-Hant-TW">核心只做一次，<span class="accent">每個產業都能用。</span></span>
   </h2>
   <div class="vrows rv">
     <div class="vrow">
       <div class="vname"><span class="en">Pet</span><span class="zh" lang="zh-Hant-TW">寵物</span></div>
       <div class="vev"><span class="e">pet.eating</span><span class="e">pet.cough_cluster</span><span class="e">pet.seizure_suspected</span><span class="e">pet.daily_diary</span></div>
-      <span class="badge live"><span class="en">live testbed</span><span class="zh" lang="zh-Hant-TW">運作中試驗場</span></span>
+      <span class="badge live"><span class="en">live testbed</span><span class="zh" lang="zh-Hant-TW">已在運作</span></span>
     </div>
     <div class="vrow">
-      <div class="vname"><span class="en">Poultry</span><span class="zh" lang="zh-Hant-TW">禽畜</span></div>
+      <div class="vname"><span class="en">Poultry</span><span class="zh" lang="zh-Hant-TW">養雞場</span></div>
       <div class="vev"><span class="e">flock.activity_drop</span><span class="e">bird.immobile</span><span class="e">feedline.traffic</span></div>
-      <span class="badge target"><span class="en">first commercial target</span><span class="zh" lang="zh-Hant-TW">首個商業化目標</span></span>
+      <span class="badge target"><span class="en">first commercial target</span><span class="zh" lang="zh-Hant-TW">第一個商業目標</span></span>
     </div>
     <div class="vrow">
       <div class="vname"><span class="en">Restaurant</span><span class="zh" lang="zh-Hant-TW">餐飲</span></div>
       <div class="vev"><span class="e">table.ready</span><span class="e">queue.length</span><span class="e">station.idle</span></div>
-      <span class="badge explore"><span class="en">exploratory</span><span class="zh" lang="zh-Hant-TW">探索中</span></span>
+      <span class="badge explore"><span class="en">exploratory</span><span class="zh" lang="zh-Hant-TW">評估中</span></span>
     </div>
     <div class="vrow">
       <div class="vname"><span class="en">Sports venue</span><span class="zh" lang="zh-Hant-TW">運動場館</span></div>
       <div class="vev"><span class="e">court.occupied</span><span class="e">court.utilization</span><span class="e">session.player_count</span></div>
-      <span class="badge explore"><span class="en">exploratory</span><span class="zh" lang="zh-Hant-TW">探索中</span></span>
+      <span class="badge explore"><span class="en">exploratory</span><span class="zh" lang="zh-Hant-TW">評估中</span></span>
     </div>
   </div>
   <p class="lede rv" style="margin-top:36px">
-    <span class="en">Eight generic trigger classes — presence, zone-dwell, motion-pattern, audio, frequency, immobility, count, schedule — cover every row above. <strong>That's the bet: meaning is config, sensing is shared.</strong></span>
-    <span class="zh" lang="zh-Hant-TW">八種通用觸發類別——在席、區域停留、動作模式、聲音、頻率、靜止、數量、排程——足以涵蓋上面每一列。<strong>這就是我們的賭注：意義是設定檔，感知是共用的。</strong></span>
+    <span class="en">Eight generic trigger types — something appears, lingers in a zone, moves strangely, makes a sound, repeats too often, stops moving, changes in number, or happens on schedule — cover every row above. <strong>That's the bet: the sensing is shared; what it means belongs to each industry's config.</strong></span>
+    <span class="zh" lang="zh-Hant-TW">八種通用的觸發類型——出現了、待太久、動作怪怪的、有聲音、太頻繁、不動了、數量變了、時間到了——就足以涵蓋上面每一個產業。<strong>這就是我們的核心賭注：「看」的能力大家共用，「看懂什麼」由各產業的設定檔決定。</strong></span>
   </p>
 </section>
 
@@ -558,31 +578,36 @@
 <section class="slide" id="model">
   <div class="kicker rv"><span class="en">07 — Business model</span><span class="zh" lang="zh-Hant-TW">07 — 商業模式</span></div>
   <h2 class="rv">
-    <span class="en">B2D2B: they keep the customer. <span class="accent">We're the senses inside.</span></span>
-    <span class="zh" lang="zh-Hant-TW">B2D2B：客戶還是他們的，<span class="accent">我們是裡面的感官。</span></span>
+    <span class="en">They keep the customer. <span class="accent">We're the senses inside.</span></span>
+    <span class="zh" lang="zh-Hant-TW">我們不直接賣給店家，<span class="accent">我們讓店家用的軟體變聰明。</span></span>
   </h2>
   <p class="lede rv">
-    <span class="en">We sell to <strong>vertical software companies</strong> — ERPs and SaaS that already own the customer relationship. Embedding us is their roadmap's flagship feature; for us it's recurring API revenue without a direct sales army.</span>
-    <span class="zh" lang="zh-Hant-TW">我們賣給<strong>垂直產業軟體公司</strong>——已經握有客戶關係的 ERP 與 SaaS。嵌入我們，是他們產品藍圖上的旗艦功能；對我們而言，則是不需要直銷大軍的經常性 API 收入。</span>
+    <span class="en">We sell to <strong>the software companies that already serve each industry</strong> — the ERPs and SaaS that own the customer relationship. Embedding us gives their product a flagship feature nobody else has; for us, it's recurring revenue without a direct sales army.</span>
+    <span class="zh" lang="zh-Hant-TW">我們的客戶是<strong>已經在服務各行各業的軟體公司</strong>（ERP、SaaS）。對他們來說，接上我們，產品就多了一個別人沒有的功能；對我們來說，這是不需要養業務大軍的長期收入。</span>
   </p>
+  <div class="plain rv">
+    <span class="plabel"><span class="en">In plain words</span><span class="zh" lang="zh-Hant-TW">白話來說</span></span>
+    <p><span class="en">Think of Google Maps inside Uber: you never "buy Google Maps," but every ride uses it. The restaurant keeps using the software it already has — that software quietly plugs into us, and suddenly it can see the dining room.</span>
+    <span class="zh" lang="zh-Hant-TW">就像 Uber 裡面用的是 Google 地圖——你不會直接「買 Google 地圖」，但每趟車都在用它。餐廳老闆繼續用原本的系統，只是那套系統背後接上了我們，從此看得見現場。</span></p>
+  </div>
   <div class="grid3">
     <div class="card rv">
       <span class="num">REV·01</span>
-      <h3><span class="en">Hardware, one-time</span><span class="zh" lang="zh-Hant-TW">硬體，一次性收費</span></h3>
-      <p><span class="en">Commodity edge sensors at hardware margin. No camera-company ambitions — the device is the delivery vehicle for events.</span>
-      <span class="zh" lang="zh-Hant-TW">大宗商品化的邊緣感測器，賺取硬體毛利。我們不做攝影機公司——裝置只是事件的載具。</span></p>
+      <h3><span class="en">Hardware, one-time</span><span class="zh" lang="zh-Hant-TW">硬體：一次性收費</span></h3>
+      <p><span class="en">Commodity sensors at a fair hardware margin. No camera-company ambitions — the device is just the delivery vehicle for events.</span>
+      <span class="zh" lang="zh-Hant-TW">平價感測器，賺合理的硬體毛利。我們不是要做攝影機公司——硬體只是把事件送出來的載體。</span></p>
     </div>
     <div class="card rv">
       <span class="num">REV·02</span>
-      <h3><span class="en">API, per device / month</span><span class="zh" lang="zh-Hant-TW">API，按裝置月費</span></h3>
-      <p><span class="en">The vertical software pays per connected device for the event stream — priced inside the value of the feature they ship on top of it.</span>
-      <span class="zh" lang="zh-Hant-TW">垂直軟體按連線裝置數付月費取得事件串流——定價遠低於他們據此推出的功能所創造的價值。</span></p>
+      <h3><span class="en">API, per device / month</span><span class="zh" lang="zh-Hant-TW">API：按裝置數收月費</span></h3>
+      <p><span class="en">The software company pays per connected device for the event stream — a small slice of the value of the feature they ship on top of it.</span>
+      <span class="zh" lang="zh-Hant-TW">軟體公司按接上的裝置數量付月費，取得事件串流。跟他們靠這個功能多賺的錢相比，這筆費用只是零頭。</span></p>
     </div>
     <div class="card rv">
       <span class="num">REV·03</span>
-      <h3><span class="en">Vertical packs</span><span class="zh" lang="zh-Hant-TW">垂直設定包</span></h3>
-      <p><span class="en">Premium event types (health-critical detection, compliance) as pack tiers. New packs ship as config — <strong>our marginal cost approaches zero.</strong></span>
-      <span class="zh" lang="zh-Hant-TW">高階事件類型（健康關鍵偵測、合規監測）以設定包分級收費。新包以設定檔出貨——<strong>我們的邊際成本趨近於零。</strong></span></p>
+      <h3><span class="en">Industry packs</span><span class="zh" lang="zh-Hant-TW">產業設定包</span></h3>
+      <p><span class="en">Premium event types (health-critical alerts, compliance monitoring) priced as pack tiers. New packs ship as configuration — <strong>our marginal cost approaches zero.</strong></span>
+      <span class="zh" lang="zh-Hant-TW">進階事件（健康警示、合規監測）以設定包分級收費。新增一個產業只要寫設定檔——<strong>我們的邊際成本趨近於零。</strong></span></p>
     </div>
   </div>
 </section>
@@ -592,39 +617,39 @@
   <div class="kicker rv"><span class="en">08 — Defensibility</span><span class="zh" lang="zh-Hant-TW">08 — 護城河</span></div>
   <h2 class="rv">
     <span class="en">Models commoditize. Hardware commoditizes. <span class="accent">Verticals don't.</span></span>
-    <span class="zh" lang="zh-Hant-TW">模型會大宗商品化，硬體也會，<span class="accent">但垂直領域不會。</span></span>
+    <span class="zh" lang="zh-Hant-TW">AI 會變便宜，硬體也會。<span class="accent">懂一個產業，不會。</span></span>
   </h2>
   <div class="grid4">
     <div class="card rv">
       <span class="num">M·01</span>
       <h3><span class="en">Data flywheel</span><span class="zh" lang="zh-Hant-TW">資料飛輪</span></h3>
-      <p><span class="en">Every deployed sensor labels its vertical's edge cases. Per-subject baselines (a pet's normal cough rate) can't be bought off the shelf.</span>
-      <span class="zh" lang="zh-Hant-TW">每一台部署中的感測器，都在為其垂直領域標註邊角案例。個體基準線（一隻貓「正常」的咳嗽頻率）是買不到的。</span></p>
+      <p><span class="en">Every deployed sensor labels its industry's hardest cases. A per-subject baseline — what's a normal cough rate <em>for this cat</em> — can't be bought off the shelf.</span>
+      <span class="zh" lang="zh-Hant-TW">每一台裝機中的感測器，都在累積該產業最難判斷的案例。像「這隻貓平常咳幾聲才算正常」這種個體基準，市面上買不到。</span></p>
     </div>
     <div class="card rv">
       <span class="num">M·02</span>
-      <h3><span class="en">Deployment robustness</span><span class="zh" lang="zh-Hant-TW">部署的強健度</span></h3>
-      <p><span class="en">The unglamorous 5% — mounting, lighting, dust, flaky Wi-Fi, false-alert tuning. It's where every horizontal platform died. We do it per vertical, once, deeply.</span>
-      <span class="zh" lang="zh-Hant-TW">最不光鮮的那 5%——安裝、光線、粉塵、不穩的 Wi-Fi、誤報調校。每個水平平台都死在這裡。我們按垂直領域深耕，一次做透。</span></p>
+      <h3><span class="en">Deployment robustness</span><span class="zh" lang="zh-Hant-TW">裝得起來、跑得穩，才是真功夫</span></h3>
+      <p><span class="en">The unglamorous 5% — mounting, lighting, dust, flaky Wi-Fi, false-alert tuning. It's where every horizontal platform died. We do it per industry, once, deeply.</span>
+      <span class="zh" lang="zh-Hant-TW">安裝角度、光線、灰塵、不穩的 Wi-Fi、誤報的調校——最不起眼的 5%，正是過去所有通用平台陣亡的地方。我們一個產業一個產業，把它做透。</span></p>
     </div>
     <div class="card rv">
       <span class="num">M·03</span>
-      <h3><span class="en">The contract devs build on</span><span class="zh" lang="zh-Hant-TW">開發者賴以建構的合約</span></h3>
-      <p><span class="en">Once a vertical SaaS ships features on <code style="font-family:var(--mono);font-size:.85em;color:var(--green)">irl.event.v1</code>, switching costs are theirs to fear, not ours.</span>
-      <span class="zh" lang="zh-Hant-TW">當垂直 SaaS 基於 <code style="font-family:var(--mono);font-size:.85em;color:var(--green)">irl.event.v1</code> 推出功能後，轉換成本就站在我們這邊了。</span></p>
+      <h3><span class="en">The contract devs build on</span><span class="zh" lang="zh-Hant-TW">合作夥伴離不開的格式</span></h3>
+      <p><span class="en">Once a software company ships features on <code style="font-family:var(--mono);font-size:.85em;color:var(--green)">irl.event.v1</code>, switching costs are theirs to fear, not ours.</span>
+      <span class="zh" lang="zh-Hant-TW">當軟體公司基於我們的事件格式 <code style="font-family:var(--mono);font-size:.85em;color:var(--green)">irl.event.v1</code> 推出功能之後，要換掉我們的成本，就變得非常高。</span></p>
     </div>
     <div class="card rv">
       <span class="num">M·04</span>
-      <h3><span class="en">Swappable perception</span><span class="zh" lang="zh-Hant-TW">可抽換的感知層</span></h3>
-      <p><span class="en">The perception layer is architected to swap — specialized models today, edge VLMs tomorrow. <strong>Model progress is our tailwind, not our threat.</strong></span>
-      <span class="zh" lang="zh-Hant-TW">感知層天生可抽換——今天用特化模型，明天換邊緣 VLM。<strong>模型的進步是我們的順風，不是威脅。</strong></span></p>
+      <h3><span class="en">Swappable perception</span><span class="zh" lang="zh-Hant-TW">AI 進步是順風，不是威脅</span></h3>
+      <p><span class="en">The perception layer is built to be swapped — specialized models today, stronger models tomorrow. <strong>Every AI breakthrough lowers our cost and raises our accuracy.</strong></span>
+      <span class="zh" lang="zh-Hant-TW">感知層的設計就是可以整顆換掉——今天用特化的小模型，明天換更強的新模型。<strong>AI 每進步一次，我們的成本就更低、判斷就更準。</strong></span></p>
     </div>
   </div>
 </section>
 
 <!-- 10 ─ LANDSCAPE -->
 <section class="slide" id="landscape">
-  <div class="kicker rv"><span class="en">09 — Landscape</span><span class="zh" lang="zh-Hant-TW">09 — 競爭地景</span></div>
+  <div class="kicker rv"><span class="en">09 — Landscape</span><span class="zh" lang="zh-Hant-TW">09 — 市場格局</span></div>
   <h2 class="rv">
     <span class="en">Everyone's at the two ends. <span class="accent">The middle is open.</span></span>
     <span class="zh" lang="zh-Hant-TW">所有人都擠在兩端，<span class="accent">中間是空的。</span></span>
@@ -633,27 +658,27 @@
     <div class="landrow">
       <div class="who">Verkada · Ambient.ai · Coram</div>
       <div class="what"><span class="en">Own <strong>one</strong> vertical (security), sell closed end-products direct to enterprises. No embeddable API for other software. They validate the architecture — and leave the API lane empty.</span>
-      <span class="zh" lang="zh-Hant-TW">深耕<strong>單一</strong>垂直領域（安防），把封閉成品直售企業。沒有給其他軟體用的可嵌入 API。他們驗證了這套架構——也把 API 這條賽道空了出來。</span></div>
+      <span class="zh" lang="zh-Hant-TW">深耕<strong>單一</strong>產業（保全），整套產品直接賣給大企業，不開放其他軟體串接。他們證明了這套架構可行——也剛好把 API 這條路空了下來。</span></div>
     </div>
     <div class="landrow">
       <div class="who">Azena † · Azure Percept † · SenseCraft</div>
       <div class="what"><span class="en">Horizontal "camera app-store" platforms. Dead or unadopted — <strong>platforms-for-everyone serve no one</strong>. The graveyard that shaped our vertical-first sequencing.</span>
-      <span class="zh" lang="zh-Hant-TW">水平式「攝影機 App 商店」平台。不是收掉就是乏人問津——<strong>服務所有人的平台，最後誰也沒服務到</strong>。這片墳場決定了我們「垂直優先」的順序。</span></div>
+      <span class="zh" lang="zh-Hant-TW">想做「攝影機 App 商店」的通用平台，不是收掉就是沒人用——<strong>想一次服務所有產業的平台，最後一個產業都服務不好</strong>。這片墳場，正是我們堅持「一次做深一個產業」的原因。</span></div>
     </div>
     <div class="landrow">
       <div class="who">Roboflow · Clarifai · Lumeo</div>
       <div class="what"><span class="en">Dev-tools: they sell shovels to teams who build their own pipelines. The buyer must still create the meaning. We sell the gold, not the shovel.</span>
-      <span class="zh" lang="zh-Hant-TW">開發工具：賣鏟子給自建管線的團隊，買家還是得自己創造意義。我們賣的是金子，不是鏟子。</span></div>
+      <span class="zh" lang="zh-Hant-TW">賣工具給工程師，讓買家自己蓋系統——「意義」還是得買家自己做出來。我們不賣鏟子，直接賣挖好的金子。</span></div>
     </div>
     <div class="landrow">
       <div class="who">Butlr</div>
-      <div class="what"><span class="en">Closest analog — sensing API embedded in third-party SaaS, but occupancy-only (mmWave people-counting). Proves the B2D2B motion works; stops short of vertical meaning.</span>
-      <span class="zh" lang="zh-Hant-TW">最接近的對標——嵌入第三方 SaaS 的感測 API，但僅止於人流佔用（毫米波計數）。證明了 B2D2B 模式可行；但止步於垂直意義之前。</span></div>
+      <div class="what"><span class="en">Closest analog — sensing API embedded in third-party software, but occupancy-only (counting people with radar). Proves the business model works; stops short of business meaning.</span>
+      <span class="zh" lang="zh-Hant-TW">跟我們最像的公司——把感測 API 嵌進第三方軟體，但只做「空間裡有幾個人」這一件事。他們證明了這個商業模式行得通；我們把它再往前推一步，做到產業意義。</span></div>
     </div>
     <div class="landrow us">
       <div class="who">IRL API</div>
-      <div class="what"><span class="en"><strong>Embeddable, multi-sensor, vertical-meaning events, sold to software companies.</strong> The five-attribute combination no one occupies — in a convergence zone many will enter. Speed and vertical depth decide it.</span>
-      <span class="zh" lang="zh-Hant-TW"><strong>可嵌入、多感測器、具垂直意義的事件，賣給軟體公司。</strong>這個五屬性組合目前無人佔據——但這是條許多人即將湧入的賽道，勝負取決於速度與垂直深度。</span></div>
+      <div class="what"><span class="en"><strong>Embeddable, multi-sensor, business-meaning events, sold to software companies.</strong> The combination no one occupies today — in a lane many will enter soon. Speed and industry depth decide it.</span>
+      <span class="zh" lang="zh-Hant-TW"><strong>可嵌入、多感測器、具產業意義的事件，賣給軟體公司。</strong>這個組合目前沒有人做——但這條賽道很快就會熱起來，勝負就在速度跟產業深度。</span></div>
     </div>
   </div>
 </section>
@@ -663,32 +688,32 @@
   <div class="kicker rv"><span class="en">10 — Roadmap</span><span class="zh" lang="zh-Hant-TW">10 — 路線圖</span></div>
   <h2 class="rv">
     <span class="en">Vertical-first. <span class="accent">Expand on shared rails.</span></span>
-    <span class="zh" lang="zh-Hant-TW">垂直優先，<span class="accent">在共用軌道上擴張。</span></span>
+    <span class="zh" lang="zh-Hant-TW">先把一個產業做深，<span class="accent">再複製到下一個。</span></span>
   </h2>
   <div class="road rv">
     <div class="roaditem">
       <div class="when"><span class="en">Now — 2026 Q3</span><span class="zh" lang="zh-Hant-TW">現在 — 2026 Q3</span></div>
-      <h3><span class="en">IRL Kernel + Furbo-class MVP (pet)</span><span class="zh" lang="zh-Hant-TW">IRL Kernel ＋ Furbo 級 MVP（寵物）</span></h3>
-      <p><span class="en">The sensing framework lands inside PawtientWatch: declarative triggers, VLM verification, signed webhooks, actuation. Our own app consumes it as customer #1.</span>
-      <span class="zh" lang="zh-Hant-TW">感測框架在 PawtientWatch 內落地：宣告式觸發、VLM 驗證、簽章 webhook、反向動作。我們自己的 App 以第一號客戶身分使用它。</span></p>
+      <h3><span class="en">IRL Kernel + Furbo-class MVP (pet)</span><span class="zh" lang="zh-Hant-TW">IRL 核心＋寵物版 MVP</span></h3>
+      <p><span class="en">The sensing framework lands inside PawtientWatch: triggers, AI verification, event delivery, two-way actions. Our own app is customer #1.</span>
+      <span class="zh" lang="zh-Hant-TW">感測框架在 PawtientWatch 落地：觸發、AI 判斷、事件送達、反向控制，全部到位。我們自己的 App 就是第一個客戶。</span></p>
     </div>
     <div class="roaditem">
       <div class="when">2026 Q4</div>
-      <h3><span class="en">Event API v1 + first external integration</span><span class="zh" lang="zh-Hant-TW">事件 API v1 ＋ 首個外部串接</span></h3>
+      <h3><span class="en">Event API v1 + first external integration</span><span class="zh" lang="zh-Hant-TW">事件 API v1 ＋ 第一個外部串接</span></h3>
       <p><span class="en">Public-shaped developer docs, API keys, delivery logs. One external software team consuming events in production — the proof that matters.</span>
-      <span class="zh" lang="zh-Hant-TW">對外規格的開發者文件、API 金鑰、送達紀錄。一個外部軟體團隊在正式環境消費事件——這才是關鍵證明。</span></p>
+      <span class="zh" lang="zh-Hant-TW">對外的開發者文件、API 金鑰、送達紀錄。目標：第一個外部軟體團隊在正式環境使用我們的事件——這是最關鍵的里程碑。</span></p>
     </div>
     <div class="roaditem">
       <div class="when">2027</div>
-      <h3><span class="en">Poultry pilot — vertical #2 on the same kernel</span><span class="zh" lang="zh-Hant-TW">禽畜試點——同一核心上的第二個垂直領域</span></h3>
-      <p><span class="en">Sensors + events on a working farm (mortality candidates, flock activity, feed-line traffic). Taiwan SBIR consortium track in parallel where it fits.</span>
-      <span class="zh" lang="zh-Hant-TW">在實際營運的禽場部署感測器與事件（死亡候測、雞群活動力、料線流量）。並行評估經濟部 SBIR 研發聯盟的申請路徑。</span></p>
+      <h3><span class="en">Poultry pilot — vertical #2 on the same kernel</span><span class="zh" lang="zh-Hant-TW">養雞場試點——同一核心的第二個產業</span></h3>
+      <p><span class="en">Sensors + events on a working farm: early mortality warnings, flock activity, feeding behavior. Taiwan SBIR consortium track in parallel where it fits.</span>
+      <span class="zh" lang="zh-Hant-TW">在實際營運的雞場部署感測器：死亡預警、雞群活動力、採食狀況。同步評估申請經濟部 SBIR 研發聯盟。</span></p>
     </div>
     <div class="roaditem">
       <div class="when">2027 +</div>
-      <h3><span class="en">Vertical #3 onward — by config, not code</span><span class="zh" lang="zh-Hant-TW">第三個垂直領域起——靠設定檔，不靠寫程式</span></h3>
+      <h3><span class="en">Vertical #3 onward — by config, not code</span><span class="zh" lang="zh-Hant-TW">第三個產業起——靠設定檔，不靠重寫程式</span></h3>
       <p><span class="en">If the pack abstraction holds (we test it with a zero-code-change second pack), each new vertical is a config bundle + a domain partner.</span>
-      <span class="zh" lang="zh-Hant-TW">若設定包抽象成立（我們以「零核心改動」的第二個包來驗證），每個新垂直領域＝一份設定包＋一位領域夥伴。</span></p>
+      <span class="zh" lang="zh-Hant-TW">設定包架構驗證成功之後，每開一個新產業，就是一份設定檔＋一位產業夥伴。</span></p>
     </div>
   </div>
 </section>
@@ -698,20 +723,20 @@
   <div class="kicker rv"><span class="en">11 — The ask</span><span class="zh" lang="zh-Hant-TW">11 — 我們在找</span></div>
   <h2 class="rv">
     <span class="en">Help us give software <span class="accent">its senses.</span></span>
-    <span class="zh" lang="zh-Hant-TW">一起讓軟體<span class="accent">擁有感官。</span></span>
+    <span class="zh" lang="zh-Hant-TW">一起讓軟體<span class="accent">看得見現場。</span></span>
   </h2>
   <div class="asklist rv">
     <div class="askitem"><span class="n">01</span><div class="b">
-      <strong><span class="en">Vertical software partners</span><span class="zh" lang="zh-Hant-TW">垂直軟體夥伴</span></strong>
-      <span class="sub"><span class="en">ERPs / SaaS who want eyes in their product — pilot the event API with us.</span><span class="zh" lang="zh-Hant-TW">想讓產品擁有眼睛的 ERP／SaaS——與我們一起試點事件 API。</span></span>
+      <strong><span class="en">Software company partners</span><span class="zh" lang="zh-Hant-TW">軟體公司夥伴</span></strong>
+      <span class="sub"><span class="en">ERPs / SaaS serving restaurants, venues, farms — pilot the event API with us and give your product eyes.</span><span class="zh" lang="zh-Hant-TW">做餐飲、場館、畜牧等產業系統的 ERP／SaaS 團隊——跟我們一起試接事件 API，讓你的產品看得見現場。</span></span>
     </div></div>
     <div class="askitem"><span class="n">02</span><div class="b">
       <strong><span class="en">Pilot sites</span><span class="zh" lang="zh-Hant-TW">試點場域</span></strong>
-      <span class="sub"><span class="en">Farms, venues, restaurants willing to host sensors and tell us what's worth detecting.</span><span class="zh" lang="zh-Hant-TW">願意安裝感測器、並告訴我們「什麼值得偵測」的禽場、場館與餐廳。</span></span>
+      <span class="sub"><span class="en">Farms, courts, restaurants willing to host sensors — and tell us what's actually worth detecting.</span><span class="zh" lang="zh-Hant-TW">願意讓我們進場安裝感測器的雞場、球場、餐廳——並告訴我們，現場什麼事最值得被看見。</span></span>
     </div></div>
     <div class="askitem"><span class="n">03</span><div class="b">
       <strong><span class="en">Consortium co-builders</span><span class="zh" lang="zh-Hant-TW">研發聯盟共建者</span></strong>
-      <span class="sub"><span class="en">Taiwan SBIR R&D-alliance track: domain companies co-building their vertical on the shared kernel.</span><span class="zh" lang="zh-Hant-TW">經濟部 SBIR 研發聯盟路徑：領域公司在共用核心上，共同打造自己的垂直應用。</span></span>
+      <span class="sub"><span class="en">Taiwan SBIR R&D-alliance track: domain companies co-building their industry's application on the shared kernel.</span><span class="zh" lang="zh-Hant-TW">有意申請經濟部 SBIR 研發聯盟的企業——在共用核心上，打造自己產業的應用。</span></span>
     </div></div>
   </div>
   <div class="contact rv">
@@ -723,8 +748,8 @@
     <a href="mailto:magnetic.lin@gmail.com">magnetic.lin@gmail.com</a>
   </div>
   <div class="footer-note rv">
-    <span class="en">IRL API · working name · deck v1 · 2026.06 · prototype claims refer to the PawtientWatch pipeline</span>
-    <span class="zh" lang="zh-Hant-TW">IRL API · 計畫代號 · 簡報 v1 · 2026.06 · 原型相關陳述均指 PawtientWatch 管線</span>
+    <span class="en">IRL API · working name · deck v1.1 · 2026.06 · prototype claims refer to the PawtientWatch pipeline</span>
+    <span class="zh" lang="zh-Hant-TW">IRL API · 暫定名稱 · 簡報 v1.1 · 2026.06 · 「原型」相關說明均指 PawtientWatch 系統</span>
   </div>
 </section>
 
